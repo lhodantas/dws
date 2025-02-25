@@ -9,7 +9,7 @@ const apiInstance = (() => {
 
   return () => {
     if (!instance) {
-      instance = baseApiFactory(`${process.env.VITE_APP_DWS_API_BASE_URL}`);
+      instance = baseApiFactory(`${import.meta.env.VITE_APP_DWS_API_BASE_URL}`);
     }
     return instance;
   };
