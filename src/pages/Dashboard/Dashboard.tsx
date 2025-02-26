@@ -20,6 +20,17 @@ export const Dashboard = () => {
   const { data: categoriesData } = useGetCategories();
   const { data: postsData } = useGetPosts();
 
+  const sortingRules = {
+    [ESortBy.ASC]: (a: IPostDto, b: IPostDto) =>
+      new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+    [ESortBy.DES]: (a: IPostDto, b: IPostDto) =>
+      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  };
+
+  const handleSort = () => {
+    setShownPosts((prev) => [...prev].sort(sortingRules[sortBy]));
+  };
+
   const toggleAuthorFilter = (authorId: string) => {
     setAuthorsFilter((prev) =>
       prev.includes(authorId)
@@ -69,7 +80,7 @@ export const Dashboard = () => {
     <PageTemplate>
       <S.TBar>
         <S.Title>DWS blog</S.Title>
-        <SortBy sortBy={sortBy} setSortBy={setSortBy} />
+        <SortBy sortBy={sortBy} setSortBy={setSortBy} handleSort={handleSort} />
       </S.TBar>
       <S.ContentWrapper>
         <SideBar

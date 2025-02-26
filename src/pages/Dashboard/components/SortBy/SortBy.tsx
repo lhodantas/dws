@@ -12,9 +12,10 @@ export enum ESortBy {
 interface ISortByProps {
   sortBy: ESortBy;
   setSortBy: React.Dispatch<React.SetStateAction<ESortBy>>;
+  handleSort: () => void;
 }
 
-export const SortBy = ({ setSortBy, sortBy }: ISortByProps) => {
+export const SortBy = ({ setSortBy, sortBy, handleSort }: ISortByProps) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleClickOnMenuItem = (
@@ -24,6 +25,7 @@ export const SortBy = ({ setSortBy, sortBy }: ISortByProps) => {
     event.stopPropagation();
     setSortBy(sortType);
     setShowMenu(false);
+    handleSort();
   };
 
   const toggleMenu = () => {
