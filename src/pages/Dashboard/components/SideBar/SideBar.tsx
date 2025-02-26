@@ -1,6 +1,7 @@
 import { IconFilters } from "components/Icons";
 
 import { ICategoryDto, IAuthorDto } from "services/dws-api/dtos/outputs";
+import { getLastName } from "utils/strings";
 
 import * as S from "./SideBar.styles";
 
@@ -23,12 +24,6 @@ export const SideBar = ({
   selectedCategoriesFilter,
   handleFilters,
 }: ISideBarProps) => {
-  function getLastName(fullName: string) {
-    const nameParts = fullName.trim().split(/\s+/);
-    return nameParts.length > 1
-      ? nameParts[nameParts.length - 1]
-      : nameParts[0];
-  }
   return (
     <S.Wrapper>
       <S.IconTitle>

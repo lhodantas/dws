@@ -5,6 +5,7 @@ import { useGetPostsById } from "services/dws-api-react-query/useGetPostById";
 import { useGetPosts } from "services/dws-api-react-query/useGetPosts";
 import { PostList } from "components/PostList";
 import { IconArrowLeft } from "components/Icons";
+import { formatDate } from "utils/dates";
 
 import * as S from "./BlogPost.styles";
 
@@ -13,15 +14,6 @@ export const BlogPost = () => {
   const { data: postData } = useGetPostsById({ postId: postId ?? "" });
   const { data: postsData } = useGetPosts();
 
-  function formatDate(date: string) {
-    const newDate = new Date(date);
-    const options = { year: "numeric", month: "short", day: "2-digit" };
-    //@ts-ignore
-    const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
-      newDate
-    );
-    return formattedDate;
-  }
   if (!postData) return <></>;
   return (
     <PageTemplate>

@@ -1,5 +1,8 @@
 import { ICategoryDto } from "services/dws-api/dtos/outputs";
 
+import { getLastName } from "utils/strings";
+import { formatDate } from "utils/dates";
+
 import * as S from "./PostCard.styles";
 
 interface IPostCardProps {
@@ -21,23 +24,6 @@ export const PostCard = ({
   thumbUrl,
   title,
 }: IPostCardProps) => {
-  function formatDate(date: string) {
-    const newDate = new Date(date);
-    const options = { year: "numeric", month: "short", day: "2-digit" };
-    //@ts-ignore
-    const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
-      newDate
-    );
-    return formattedDate;
-  }
-
-  function getLastName(fullName: string) {
-    const nameParts = fullName.trim().split(/\s+/);
-    return nameParts.length > 1
-      ? nameParts[nameParts.length - 1]
-      : nameParts[0];
-  }
-
   return (
     <S.Wrapper to={`/post/${postId}`}>
       <S.Thumbnail src={thumbUrl} alt={title} />
