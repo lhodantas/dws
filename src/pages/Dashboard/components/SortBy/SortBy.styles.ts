@@ -67,8 +67,8 @@ export const SortMenu = styled.div`
 
     padding: 12px 8px;
     background-color: ${theme.color.neutral.lightest};
-    box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
     width: max-content;
   `}
 `;

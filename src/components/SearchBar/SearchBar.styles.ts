@@ -46,18 +46,32 @@ export const Dropdown = styled.div`
   left: 16px;
   width: calc(100% - 32px);
 
-  background: white;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: ${({ theme }) => theme.color.neutral.lightest};
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
   z-index: 10;
   max-height: 200px;
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.color.neutral.dark};
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    margin-block: 10px;
+    border-radius: 10px;
+  }
 `;
 
 export const DropdownItem = styled.div`
   padding: 10px;
   cursor: pointer;
   &:hover {
-    background: lightgray;
+    background: ${({ theme }) => theme.color.neutral.extraLight};
   }
 `;
