@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { IconUpDown } from "components/Icons";
 
@@ -18,6 +18,8 @@ interface ISortByProps {
 export const SortBy = ({ setSortBy, sortBy, handleSort }: ISortByProps) => {
   const [showMenu, setShowMenu] = useState(false);
 
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
   const handleClickOnMenuItem = (
     sortType: ESortBy,
     event: React.MouseEvent
@@ -28,17 +30,31 @@ export const SortBy = ({ setSortBy, sortBy, handleSort }: ISortByProps) => {
     handleSort();
   };
 
-  const toggleMenu = () => {
+  const toggleMenu = (event: React.MouseEvent) => {
+    event.stopPropagation();
     setShowMenu((prev) => !prev);
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      setShowMenu(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <S.Wrapper>
       <S.Text>Sort by:</S.Text>
-      <S.Sort onClick={toggleMenu}>
+      <S.Sort onClick={(e) => toggleMenu(e)}>
         {sortBy} <IconUpDown />
         {showMenu && (
-          <S.SortMenu>
+          <S.SortMenu ref={menuRef}>
             {Object.values(ESortBy).map((sortType) => (
               <S.SortChild
                 key={sortType}

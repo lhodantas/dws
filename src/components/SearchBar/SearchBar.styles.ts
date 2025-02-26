@@ -39,3 +39,25 @@ export const IconWrapper = styled.div`
     border-radius: 50%;
   `}
 `;
+
+export const Dropdown = styled.div`
+  position: absolute;
+  top: 56px;
+  left: 16px;
+  width: calc(100% - 32px);
+
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+`;
+
+export const DropdownItem = styled.div`
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    background: lightgray;
+  }
+`;
