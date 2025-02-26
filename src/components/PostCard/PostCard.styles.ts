@@ -11,6 +11,11 @@ export const Wrapper = styled(Link)`
     color: unset;
     text-decoration: none;
     cursor: pointer;
+
+    @media (max-width: 768px) {
+      aspect-ratio: unset;
+      height: unset;
+    }
   `}
 `;
 
@@ -19,6 +24,11 @@ export const Thumbnail = styled.img`
   width: 100%;
   aspect-ratio: 1.6;
   border-radius: 16px 16px 0 0;
+
+  @media (max-width: 768px) {
+    aspect-ratio: 2.25;
+    height: unset;
+  }
 `;
 
 export const Content = styled.div`
@@ -36,6 +46,11 @@ export const Content = styled.div`
     border-width: 0 1px 1px 1px;
     border-color: ${theme.color.neutral.light};
     border-radius: 0 0 16px 16px;
+
+    @media (max-width: 768px) {
+      justify-content: flex-start;
+      height: unset;
+    }
   `}
 `;
 
@@ -63,7 +78,9 @@ export const Bullet = styled.div`
 `;
 
 export const MainText = styled.div`
-  flex-grow: 1;
+  @media (min-width: 768px) {
+    flex-grow: 1;
+  }
 `;
 
 export const Title = styled.h3`
@@ -92,10 +109,10 @@ export const Description = styled.p`
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: calc(2 * 1.2em);
+    max-height: calc(3 * 1.2em);
     line-height: 1.2em;
   `}
 `;

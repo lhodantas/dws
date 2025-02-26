@@ -11,6 +11,10 @@ export const Title = styled.h1`
     font-size: ${theme.typography.h1.sizeRem};
     line-height: ${theme.typography.h1.lineHeight};
     font-weight: ${theme.typography.h1.weight};
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   `}
 `;
 
@@ -20,4 +24,8 @@ export const ContentWrapper = styled.div`
   align-items: start;
   gap: 20px;
   margin-top: 32px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;

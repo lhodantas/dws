@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { PostList } from "components/PostList";
+import { useWindowSize } from "hooks/useWindowSize";
 import { PageTemplate } from "templates/PageTemplate/PageTemplate";
 import { useGetAuthors } from "services/dws-api-react-query/useGetAuthors";
 import { useGetCategories } from "services/dws-api-react-query/useGetCategories";
@@ -15,6 +16,9 @@ export const Dashboard = () => {
   const [categoriesFilter, setCategoriesFilter] = useState<string[]>([]);
   const [shownPosts, setShownPosts] = useState<IPostDto[]>([]);
   const [sortBy, setSortBy] = useState<ESortBy>(ESortBy.DES);
+
+  const width = useWindowSize();
+  const isMobile = width < 768;
 
   const { data: authorsData } = useGetAuthors();
   const { data: categoriesData } = useGetCategories();
@@ -83,15 +87,17 @@ export const Dashboard = () => {
         <SortBy sortBy={sortBy} setSortBy={setSortBy} handleSort={handleSort} />
       </S.TBar>
       <S.ContentWrapper>
-        <SideBar
-          authors={authorsData ?? []}
-          categories={categoriesData ?? []}
-          toggleAuthorFilter={toggleAuthorFilter}
-          selectedAuthorsFilter={authorsFilter}
-          toggleCategoryFilter={toggleCategoryFilter}
-          selectedCategoriesFilter={categoriesFilter}
-          handleFilters={handleFilters}
-        />
+        {!isMobile && (
+          <SideBar
+            authors={authorsData ?? []}
+            categories={categoriesData ?? []}
+            toggleAuthorFilter={toggleAuthorFilter}
+            selectedAuthorsFilter={authorsFilter}
+            toggleCategoryFilter={toggleCategoryFilter}
+            selectedCategoriesFilter={categoriesFilter}
+            handleFilters={handleFilters}
+          />
+        )}
         <PostList posts={shownPosts} />
       </S.ContentWrapper>
     </PageTemplate>
