@@ -57,6 +57,7 @@ export const SortBy = ({ setSortBy, sortBy, handleSort }: ISortByProps) => {
           <S.SortMenu ref={menuRef}>
             {Object.values(ESortBy).map((sortType) => (
               <S.SortChild
+                as="button"
                 key={sortType}
                 onClick={(e) => handleClickOnMenuItem(sortType, e)}
               >

@@ -16,7 +16,7 @@ export const Text = styled.p`
   `}
 `;
 
-export const Sort = styled.button`
+export const Sort = styled.div`
   ${({ theme }) => css`
     position: relative;
 
