@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 
-export const TBar = styled.div``;
+export const TBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 export const Title = styled.h1`
   ${({ theme }) => css`

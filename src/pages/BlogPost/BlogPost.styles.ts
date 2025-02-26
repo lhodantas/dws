@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   justify-items: start;
+  margin-bottom: 6%;
 `;
 
 export const ReturnButton = styled(Link)`
@@ -92,5 +93,14 @@ export const Divider = styled.div`
     height: 1px;
     margin-block: 48px 64px;
     background-color: ${theme.color.neutral.light};
+  `}
+`;
+
+export const LatestTitle = styled.div`
+  ${({ theme }) => css`
+    font-size: ${theme.typography.h2.sizeRem};
+    line-height: ${theme.typography.h2.lineHeight};
+    font-weight: ${theme.typography.h2.weight};
+    margin-bottom: 32px;
   `}
 `;

@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 
 import { PageTemplate } from "templates/PageTemplate/PageTemplate";
 import { useGetPostsById } from "services/dws-api-react-query/useGetPostById";
+import { useGetPosts } from "services/dws-api-react-query/useGetPosts";
+import { PostList } from "components/PostList";
 import { IconArrowLeft } from "components/Icons";
 
 import * as S from "./BlogPost.styles";
@@ -9,6 +11,7 @@ import * as S from "./BlogPost.styles";
 export const BlogPost = () => {
   const { postId } = useParams<{ postId: string }>();
   const { data: postData } = useGetPostsById({ postId: postId ?? "" });
+  const { data: postsData } = useGetPosts();
 
   function formatDate(date: string) {
     const newDate = new Date(date);
@@ -46,6 +49,8 @@ export const BlogPost = () => {
           <S.Thumbnail src={postData?.thumbnail_url} alt={postData?.title} />
           <p>{postData?.content}</p>
           <S.Divider />
+          <S.LatestTitle>Latest articles</S.LatestTitle>
+          <PostList posts={postsData?.slice(0, 3) ?? []} />
         </div>
         <div></div>
       </S.Wrapper>

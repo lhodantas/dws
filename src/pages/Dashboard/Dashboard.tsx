@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
 
+import { PostList } from "components/PostList";
 import { PageTemplate } from "templates/PageTemplate/PageTemplate";
 import { useGetAuthors } from "services/dws-api-react-query/useGetAuthors";
 import { useGetCategories } from "services/dws-api-react-query/useGetCategories";
 import { useGetPosts } from "services/dws-api-react-query/useGetPosts";
 import { IPostDto } from "services/dws-api/dtos/outputs";
 
-import { PostList } from "./components/PostList";
-import { SideBar } from "./components/SideBar";
+import { SideBar, SortBy, ESortBy } from "./components";
 import * as S from "./Dashboard.styles";
 
 export const Dashboard = () => {
   const [authorsFilter, setAuthorsFilter] = useState<string[]>([]);
   const [categoriesFilter, setCategoriesFilter] = useState<string[]>([]);
   const [shownPosts, setShownPosts] = useState<IPostDto[]>([]);
+  const [sortBy, setSortBy] = useState<ESortBy>(ESortBy.DES);
 
   const { data: authorsData } = useGetAuthors();
   const { data: categoriesData } = useGetCategories();
   const { data: postsData } = useGetPosts();
-
-  console.log({ categoriesFilter, authorsFilter, shownPosts, postsData });
 
   const toggleAuthorFilter = (authorId: string) => {
     setAuthorsFilter((prev) =>
@@ -68,7 +67,10 @@ export const Dashboard = () => {
 
   return (
     <PageTemplate>
-      <S.Title>DWS blog</S.Title>
+      <S.TBar>
+        <S.Title>DWS blog</S.Title>
+        <SortBy sortBy={sortBy} setSortBy={setSortBy} />
+      </S.TBar>
       <S.ContentWrapper>
         <SideBar
           authors={authorsData ?? []}
