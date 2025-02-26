@@ -13,6 +13,7 @@ export const PostList = ({ posts }: IPostListProps) => {
       {posts.map((post, index) => (
         <PostCard
           key={index}
+          postId={post.id}
           thumbUrl={post.thumbnail_url}
           authorLastName={post.author.name}
           title={post.title}

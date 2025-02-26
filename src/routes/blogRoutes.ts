@@ -6,10 +6,15 @@ interface IBlogRoutes {
 }
 
 const Dashboard = lazy(() => import("pages/Dashboard"));
+const BlogPost = lazy(() => import("pages/BlogPost"));
 
 export const blogRoutes: IBlogRoutes[] = [
   {
     path: "/",
     component: Dashboard,
+  },
+  {
+    path: "/post/:postId",
+    component: BlogPost,
   },
 ];

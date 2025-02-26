@@ -5,7 +5,6 @@ export const TBar = styled.div``;
 export const Title = styled.h1`
   ${({ theme }) => css`
     font-size: ${theme.typography.h1.sizeRem};
-    font-weight: ${theme.typography.h1.weight};
     line-height: ${theme.typography.h1.lineHeight};
     font-weight: ${theme.typography.h1.weight};
   `}

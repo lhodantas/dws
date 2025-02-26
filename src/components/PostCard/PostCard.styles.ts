@@ -1,11 +1,16 @@
+import { Link } from "react-router-dom";
+
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(Link)`
   ${({ theme }) => css`
     height: 100%;
     aspect-ratio: 0.74;
     overflow: hidden;
     background-color: ${theme.color.neutral.lightest};
+    color: unset;
+    text-decoration: none;
+    cursor: pointer;
   `}
 `;
 
@@ -42,7 +47,6 @@ export const MetaData = styled.div`
     gap: 8px;
 
     font-size: ${theme.typography.caption.sizeRem};
-    font-weight: ${theme.typography.caption.weight};
     line-height: ${theme.typography.caption.lineHeight};
     font-weight: ${theme.typography.caption.weight};
     color: ${theme.color.neutral.extraDark};
@@ -65,7 +69,6 @@ export const MainText = styled.div`
 export const Title = styled.h3`
   ${({ theme }) => css`
     font-size: ${theme.typography.h3.sizeRem};
-    font-weight: ${theme.typography.h3.weight};
     line-height: ${theme.typography.h3.lineHeight};
     font-weight: ${theme.typography.h3.weight};
 
@@ -84,7 +87,6 @@ export const Title = styled.h3`
 export const Description = styled.p`
   ${({ theme }) => css`
     font-size: ${theme.typography.bodySmall.sizeRem};
-    font-weight: ${theme.typography.bodySmall.weight};
     line-height: ${theme.typography.bodySmall.lineHeight};
     font-weight: ${theme.typography.bodySmall.weight[0]};
 
@@ -112,7 +114,6 @@ export const Tag = styled.p`
     border-radius: 100px;
 
     font-size: ${theme.typography.caption.sizeRem};
-    font-weight: ${theme.typography.caption.weight};
     line-height: ${theme.typography.caption.lineHeight};
     font-weight: ${theme.typography.caption.weight};
     color: ${theme.color.neutral.darkest};

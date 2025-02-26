@@ -23,7 +23,6 @@ export const IconTitle = styled.div`
 export const Title = styled.h2`
   ${({ theme }) => css`
     font-size: ${theme.typography.h2.sizeRem};
-    font-weight: ${theme.typography.h2.weight};
     line-height: ${theme.typography.h2.lineHeight};
     font-weight: ${theme.typography.h2.weight};
     color: ${theme.color.primary.dark};
@@ -33,7 +32,6 @@ export const Title = styled.h2`
 export const Subtitle = styled.h3`
   ${({ theme }) => css`
     font-size: ${theme.typography.h3.sizeRem};
-    font-weight: ${theme.typography.h3.weight};
     line-height: ${theme.typography.h3.lineHeight};
     font-weight: ${theme.typography.h3.weight};
     color: ${theme.color.primary.dark};
@@ -52,7 +50,6 @@ export const FilterWrapper = styled.div`
 export const Filter = styled.button<IFilterProps>`
   ${({ theme, selected }) => css`
     font-size: ${theme.typography.bodyLarge.sizeRem};
-    font-weight: ${theme.typography.bodyLarge.weight};
     line-height: ${theme.typography.bodyLarge.lineHeight};
     font-weight: ${theme.typography.bodyLarge.weight[0]};
     color: ${theme.color.primary.dark};
@@ -92,7 +89,6 @@ export const Button = styled.button`
     border-radius: 100px;
 
     font-size: ${theme.typography.bodyLarge.sizeRem};
-    font-weight: ${theme.typography.bodyLarge.weight};
     line-height: ${theme.typography.bodyLarge.lineHeight};
     font-weight: ${theme.typography.bodyLarge.weight[1]};
     color: ${theme.color.neutral.lightest};

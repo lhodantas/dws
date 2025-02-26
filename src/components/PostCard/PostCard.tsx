@@ -3,6 +3,7 @@ import { ICategoryDto } from "services/dws-api/dtos/outputs";
 import * as S from "./PostCard.styles";
 
 interface IPostCardProps {
+  postId: string;
   thumbUrl: string;
   date: string;
   authorLastName: string;
@@ -12,6 +13,7 @@ interface IPostCardProps {
 }
 
 export const PostCard = ({
+  postId,
   authorLastName,
   categories,
   date,
@@ -37,7 +39,7 @@ export const PostCard = ({
   }
 
   return (
-    <S.Wrapper>
+    <S.Wrapper to={`/post/${postId}`}>
       <S.Thumbnail src={thumbUrl} alt={title} />
       <S.Content>
         <S.MetaData>
