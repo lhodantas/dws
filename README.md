@@ -76,6 +76,7 @@ The app will be available at [http://localhost:5173](http://localhost:5173).
 ├─ src                    # Application source code
 │  ├─ assets             # Images and static assets
 │  ├─ components         # Reusable components
+│  ├─ components         # Global states management
 │  ├─ hooks              # Custom React hooks
 │  ├─ pages              # Page components
 │  ├─ routes             # Route configurations
