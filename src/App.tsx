@@ -2,9 +2,10 @@ import { BrowserRouter } from "react-router-dom";
 import { StyleSheetManager, ThemeProvider } from "styled-components";
 import { QueryClientProvider } from "@tanstack/react-query";
 
+import { AppProviders } from "contexts";
+import { theme } from "themes";
 import AppRoutes from "routes/AppRoutes";
 import DefaultStyles from "styles/default";
-import { theme } from "themes";
 import { queryClient } from "services/dws-api-react-query/configs/queryClient";
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
         <ThemeProvider theme={theme}>
           <StyleSheetManager>
             <DefaultStyles />
-            <AppRoutes />
+            <AppProviders>
+              <AppRoutes />
+            </AppProviders>
           </StyleSheetManager>
         </ThemeProvider>
       </QueryClientProvider>
