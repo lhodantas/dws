@@ -13,6 +13,10 @@ export const Text = styled.p`
     line-height: ${theme.typography.bodyLarge.lineHeight};
     font-weight: ${theme.typography.bodyLarge.weight[1]};
     color: ${theme.color.neutral.extraDark};
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   `}
 `;
 

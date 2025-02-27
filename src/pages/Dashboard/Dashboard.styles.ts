@@ -1,9 +1,14 @@
 import styled, { css } from "styled-components";
 
 export const TBar = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    margin-top: 14px;
+  }
 `;
 
 export const Title = styled.h1`

@@ -8,7 +8,7 @@ import { useGetCategories } from "services/dws-api-react-query/useGetCategories"
 import { useGetPosts } from "services/dws-api-react-query/useGetPosts";
 import { IPostDto } from "services/dws-api/dtos/outputs";
 
-import { SideBar, SortBy, ESortBy } from "./components";
+import { SideBar, SortBy, ESortBy, MobileFilters } from "./components";
 import * as S from "./Dashboard.styles";
 
 export const Dashboard = () => {
@@ -83,6 +83,18 @@ export const Dashboard = () => {
   return (
     <PageTemplate>
       <S.TBar>
+        {isMobile && (
+          <MobileFilters
+            authors={authorsData ?? []}
+            categories={categoriesData ?? []}
+            toggleAuthorFilter={toggleAuthorFilter}
+            selectedAuthorsFilter={authorsFilter}
+            toggleCategoryFilter={toggleCategoryFilter}
+            selectedCategoriesFilter={categoriesFilter}
+            handleFilters={handleFilters}
+          />
+        )}
+
         <S.Title>DWS blog</S.Title>
         <SortBy sortBy={sortBy} setSortBy={setSortBy} handleSort={handleSort} />
       </S.TBar>

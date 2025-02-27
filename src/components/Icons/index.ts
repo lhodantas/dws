@@ -1,3 +1,4 @@
+export { IconAngleDown } from "./IconAngleDown";
 export { IconArrowLeft } from "./IconArrowLeft";
 export { IconFilters } from "./IconFilters";
 export { IconLoading } from "./IconLoading";
