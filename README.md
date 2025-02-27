@@ -93,11 +93,3 @@ The app will be available at [http://localhost:5173](http://localhost:5173).
 ├─ vite.config.ts        # Vite configuration
 └─ README.md             # Project documentation
 ```
-
-## Contributing
-
-Contributions are welcome! Feel free to fork this repository and submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
