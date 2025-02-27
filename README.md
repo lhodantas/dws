@@ -1,50 +1,82 @@
-# React + TypeScript + Vite
+# DWS Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application built with **React.js**, **Vite**, and **TypeScript**, designed to provide dynamic and efficient content delivery.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Installation](#installation)
+- [Technologies](#technologies)
+- [Features](#features)
+- [Scripts](#scripts)
+- [Folder Structure](#folder-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js >= 18.x
+- npm or yarn
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-username/dws.git
+cd dws
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Install Dependencies
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+npm install
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+The app will be available at [http://localhost:5173](http://localhost:5173).
+
+## Technologies
+
+- **React 19**: Modern frontend library for building user interfaces.
+- **TypeScript**: Static typing for JavaScript.
+- **Vite**: Fast build tool optimized for modern JavaScript frameworks.
+- **Styled Components**: CSS-in-JS solution for component styling.
+- **React Router**: Navigation and routing for React applications.
+- **TanStack React Query**: Data fetching and caching.
+- **Axios**: HTTP client for API requests.
+- **ESLint**: Code linting and formatting.
+
+## Features
+
+- Filtering and searching posts by author and category.
+- Responsive design.
+- Reusable components.
+- API integration with Axios.
+- Client-side caching with React Query.
+
+## Scripts
+
+| Script    | Description                      |
+| --------- | -------------------------------- |
+| `dev`     | Start development server         |
+| `build`   | Build project for production     |
+| `serve`   | Serve production build           |
+| `lint`    | Run ESLint to check code quality |
+| `preview` | Preview production build         |
+
+## Folder Structure
+
+```bash
+src/
+├── components/        # Reusable components
+├── hooks/            # Custom hooks
+├── pages/            # Page components
+├── services/         # API services
+├── styles/           # Global styles
+└── utils/            # Utility functions
 ```
