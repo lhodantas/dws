@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   grid-template-columns: 1fr 3fr 1fr;
   justify-items: start;
   margin-bottom: 6%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ReturnButton = styled(Link)`
@@ -41,6 +45,11 @@ export const Title = styled.h1`
     font-size: ${theme.typography.h1.sizeRem};
     line-height: ${theme.typography.h1.lineHeight};
     font-weight: ${theme.typography.h1.weight};
+
+    @media (max-width: 768px) {
+      font-size: ${theme.typography.h2.sizeRem};
+      margin-top: 24px;
+    }
   `}
 `;
 
@@ -85,6 +94,14 @@ export const Thumbnail = styled.img`
   width: 100%;
   border-radius: 16px;
   margin: 24px 0;
+`;
+
+export const Content = styled.p`
+  ${({ theme }) => css`
+    font-size: ${theme.typography.bodyLarge.sizeRem};
+    line-height: ${theme.typography.bodyLarge.lineHeight};
+    font-weight: ${theme.typography.bodyLarge.weight[0]};
+  `}
 `;
 
 export const Divider = styled.div`

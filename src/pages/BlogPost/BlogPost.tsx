@@ -39,7 +39,7 @@ export const BlogPost = () => {
             </div>
           </S.AuthorBox>
           <S.Thumbnail src={postData?.thumbnail_url} alt={postData?.title} />
-          <p>{postData?.content}</p>
+          <S.Content>{postData?.content}</S.Content>
           <S.Divider />
           <S.LatestTitle>Latest articles</S.LatestTitle>
           <PostList posts={postsData?.slice(0, 3) ?? []} />
