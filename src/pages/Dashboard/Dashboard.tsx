@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { PostList } from "components/PostList";
+import { useFilters } from "contexts/FiltersContext";
 import { useWindowSize } from "hooks/useWindowSize";
 import { PageTemplate } from "templates/PageTemplate/PageTemplate";
 import { useGetAuthors } from "services/dws-api-react-query/useGetAuthors";
@@ -12,8 +13,15 @@ import { SideBar, SortBy, ESortBy, MobileFilters } from "./components";
 import * as S from "./Dashboard.styles";
 
 export const Dashboard = () => {
-  const [authorsFilter, setAuthorsFilter] = useState<string[]>([]);
-  const [categoriesFilter, setCategoriesFilter] = useState<string[]>([]);
+  const {
+    selectedAuthors,
+    selectedCategories,
+    toggleAuthor,
+    toggleCategory,
+    clearFilters,
+    filteredPosts,
+  } = useFilters();
+
   const [shownPosts, setShownPosts] = useState<IPostDto[]>([]);
   const [sortBy, setSortBy] = useState<ESortBy>(ESortBy.DES);
 
@@ -22,7 +30,6 @@ export const Dashboard = () => {
 
   const { data: authorsData } = useGetAuthors();
   const { data: categoriesData } = useGetCategories();
-  const { data: postsData } = useGetPosts();
 
   const sortingRules = {
     [ESortBy.ASC]: (a: IPostDto, b: IPostDto) =>
@@ -35,50 +42,9 @@ export const Dashboard = () => {
     setShownPosts((prev) => [...prev].sort(sortingRules[sortBy]));
   };
 
-  const toggleAuthorFilter = (authorId: string) => {
-    setAuthorsFilter((prev) =>
-      prev.includes(authorId)
-        ? prev.filter((id) => id !== authorId)
-        : [...prev, authorId]
-    );
-  };
-
-  const toggleCategoryFilter = (categoryId: string) => {
-    setCategoriesFilter((prev) =>
-      prev.includes(categoryId)
-        ? prev.filter((id) => id !== categoryId)
-        : [...prev, categoryId]
-    );
-  };
-
-  const handleFilters = () => {
-    if (!postsData) return;
-
-    if (!authorsFilter.length && !categoriesFilter.length) {
-      setShownPosts(postsData);
-      return;
-    }
-
-    const filteredPosts = postsData.filter((post) => {
-      const postCategoriesIds = post.categories.map((category) => category.id);
-
-      const isPostAuthorIncluded =
-        authorsFilter.length === 0 || authorsFilter.includes(post.author.id);
-
-      const arePostCategoriesIncluded =
-        categoriesFilter.length === 0 ||
-        (post.categories.length > 0 &&
-          postCategoriesIds.some((id) => categoriesFilter.includes(id)));
-
-      return isPostAuthorIncluded && arePostCategoriesIncluded;
-    });
-
-    setShownPosts(filteredPosts);
-  };
-
   useEffect(() => {
-    setShownPosts(postsData ?? []);
-  }, [postsData]);
+    setShownPosts(filteredPosts);
+  }, [filteredPosts]);
 
   return (
     <PageTemplate>
@@ -87,11 +53,11 @@ export const Dashboard = () => {
           <MobileFilters
             authors={authorsData ?? []}
             categories={categoriesData ?? []}
-            toggleAuthorFilter={toggleAuthorFilter}
-            selectedAuthorsFilter={authorsFilter}
-            toggleCategoryFilter={toggleCategoryFilter}
-            selectedCategoriesFilter={categoriesFilter}
-            handleFilters={handleFilters}
+            toggleAuthorFilter={toggleAuthor}
+            selectedAuthorsFilter={selectedAuthors}
+            toggleCategoryFilter={toggleCategory}
+            selectedCategoriesFilter={selectedCategories}
+            handleFilters={() => {}}
           />
         )}
 
@@ -103,11 +69,11 @@ export const Dashboard = () => {
           <SideBar
             authors={authorsData ?? []}
             categories={categoriesData ?? []}
-            toggleAuthorFilter={toggleAuthorFilter}
-            selectedAuthorsFilter={authorsFilter}
-            toggleCategoryFilter={toggleCategoryFilter}
-            selectedCategoriesFilter={categoriesFilter}
-            handleFilters={handleFilters}
+            toggleAuthorFilter={toggleAuthor}
+            selectedAuthorsFilter={selectedAuthors}
+            toggleCategoryFilter={toggleCategory}
+            selectedCategoriesFilter={selectedCategories}
+            handleFilters={() => {}}
           />
         )}
         <PostList posts={shownPosts} />

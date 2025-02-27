@@ -54,7 +54,9 @@ export const SideBar = ({
           </S.Filter>
         ))}
       </S.FilterWrapper>
-      <S.Button onClick={handleFilters}>Apply Filters</S.Button>
+
+      {/* Not needed after global filters management was implemented */}
+      {/* <S.Button onClick={handleFilters}>Apply Filters</S.Button> */}
     </S.Wrapper>
   );
 };
