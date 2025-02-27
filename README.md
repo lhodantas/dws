@@ -1,23 +1,77 @@
-# DWS Project
+# DWS
 
-## Description
+A web application built with **React.js**, **Vite**, and **TypeScript**, designed to provide dynamic and efficient content delivery.
 
-DWS is a web application built with **React 19**, **TypeScript**, and **Vite**. It provides a scalable and modular architecture with reusable components, hooks, and utilities.
+## Table of Contents
 
-## Tech Stack
+- [Installation](#installation)
+- [Technologies](#technologies)
+- [Features](#features)
+- [Scripts](#scripts)
+- [Folder Structure](#folder-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-- React 19
-- TypeScript
-- Vite
-- Styled Components
-- React Query
-- Axios
-- React Router DOM
-- ESLint
+## Installation
+
+### Prerequisites
+
+- Node.js >= 18.x
+- npm or yarn
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-username/dws.git
+cd dws
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+The app will be available at [http://localhost:5173](http://localhost:5173).
+
+## Technologies
+
+- **React 19**: Modern frontend library for building user interfaces.
+- **TypeScript**: Static typing for JavaScript.
+- **Vite**: Fast build tool optimized for modern JavaScript frameworks.
+- **Styled Components**: CSS-in-JS solution for component styling.
+- **React Router**: Navigation and routing for React applications.
+- **TanStack React Query**: Data fetching and caching.
+- **Axios**: HTTP client for API requests.
+- **ESLint**: Code linting and formatting.
+
+## Features
+
+- Filtering and searching posts by author and category.
+- Responsive design.
+- Reusable components.
+- API integration with Axios.
+- Client-side caching with React Query.
+
+## Scripts
+
+| Script    | Description                      |
+| --------- | -------------------------------- |
+| `dev`     | Start development server         |
+| `build`   | Build project for production     |
+| `serve`   | Serve production build           |
+| `lint`    | Run ESLint to check code quality |
+| `preview` | Preview production build         |
 
 ## Folder Structure
 
-```
+```bash
 ├─ public                 # Static files (images, fonts, etc.)
 ├─ src                    # Application source code
 │  ├─ assets             # Images and static assets
@@ -40,53 +94,9 @@ DWS is a web application built with **React 19**, **TypeScript**, and **Vite**. 
 └─ README.md             # Project documentation
 ```
 
-## Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/your-repo/dws.git
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Create `.env` file based on `.env.example` and set environment variables.
-
-## Running the Project
-
-To start the development server:
-
-```bash
-npm run dev
-```
-
-To build the project:
-
-```bash
-npm run build
-```
-
-To preview the production build:
-
-```bash
-npm run preview
-```
-
-## Linting
-
-Run ESLint to check for linting errors:
-
-```bash
-npm run lint
-```
-
 ## Contributing
 
-Feel free to submit issues or pull requests.
+Contributions are welcome! Feel free to fork this repository and submit a pull request.
 
 ## License
 
